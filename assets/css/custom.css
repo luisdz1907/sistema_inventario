@@ -1,0 +1,25 @@
+:root {
+  --red: #cf0a0a;
+  --green: #379237;
+}
+.alert-error {
+  background-color: var(--red);
+  padding: 0.5rem;
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+}
+.alert-success{
+  background-color: var(--green);
+  padding: 0.5rem;
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+}
+.row-left-i {
+  color: #326abc;
+  font-size: 20px;
+}
+.row-left-i:hover{
+    color: #B2B2B2;
+}
