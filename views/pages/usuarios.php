@@ -36,7 +36,7 @@
                                 <td class="text-center"><?php echo $row["ciudad_residencia"] ?></td>
                                 <td class="text-center"><?php echo $row["celular"] ?></td>
                                 <td class="text-center">
-                                    <a class="btn btn-success" href="actualizar-usuario"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a class="btn btn-success" href="actualizar-usuario?<?php echo $row['id'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
                                     <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
                                 </td>
                             </tr>
