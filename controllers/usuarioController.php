@@ -9,6 +9,7 @@ class UsuarioController
         $username = $_POST["username"];
         $password = $_POST["password"];
 
+  
         if (isset($password)) {
             if (
                 preg_match('/^[a-zA-Z0-9]+$/', $password) &&
@@ -16,11 +17,21 @@ class UsuarioController
             ) {
 
                 $resul = $this->usuarioId($username);
-
                 //Verificamos la contraseña
-                $auth = password_verify($password, $resul["password"]);
+                // $auth = password_verify($password, $resul["password"]);
 
-                if ($auth) {
+                // if ($auth) {
+                //     // Cambiamos el valor de la session
+                //     $_SESSION["login"] = true;
+                //     header('Location: inicio');
+                // } else {
+                //     echo alertError("Error al ingresar, credenciales inválidas");
+                // }
+
+                if (
+                    $resul["usuario"] == $username &&
+                    $resul["password"] == $password
+                  ) {
                     // Cambiamos el valor de la session
                     $_SESSION["login"] = true;
                     header('Location: inicio');
@@ -33,45 +44,40 @@ class UsuarioController
 
     public function crearUsuario()
     {
-        $nombre = $_POST["nombre"];
-        $usuario = $_POST["usuario"];
-        $password = $_POST["password"];
-        $perfil = $_POST["perfil"];
-        $imagen_perfil = $_FILES["imagen"];
+        $nombre =  $_POST["nombre"];
+        $tipo_documento =  $_POST["tipo_documento"];
+        $nro_documento =  $_POST["nro_documento"];
+        $direccion =  $_POST["direccion"];
+        $fecha_nacimiento =  $_POST["fecha_nacimiento"];
+        $ciudad_residencia =  $_POST["ciudad_residencia"];
+        $celular =  $_POST["celular"];
+
+       
+
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
-            //Comprobamos que el usuario no exita en la bd
-            $userExist = $this->usuarioId($usuario);
-            if ($userExist) {
-                echo alertError("Usuario ya existe");
-            }
-
-            if (
-                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $nombre) && preg_match('/^[a-zA-Z0-9]+$/', $usuario) &&
-                preg_match('/^[a-zA-Z0-9]+$/', $password)
-            ) {
-
-                //Encriptamos la contraseña
-                $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-
+            
                 //Creamos un arreglo con los valores capturados
                 $data = array(
                     "nombre" => $nombre,
-                    "usuario" => $usuario,
-                    "password" => $passwordHash,
-                    "perfil" => $perfil
+                    "tipo_documento" => $tipo_documento,
+                    "nro_documento" => $nro_documento,
+                    "direccion" => $direccion,
+                    "fecha_nacimiento" => $fecha_nacimiento,
+                    "ciudad_residencia" => $ciudad_residencia,
+                    "celular" => $celular
                 );
+                
 
                 $result = UsuarioModel::guardarUsuario($data);
 
                 //Mostramos alerta segun el return
                 if ($result) {
-                    header('Location: usuarios');
+                    echo alertError("Usuario guardado");
                 } else {
                     echo alertError("Error al guardar el usuario");
                 }
-            }
+            
         }
     }
 
@@ -86,5 +92,4 @@ class UsuarioController
         $resultado = UsuarioModel::listaUsuarios();
         return $resultado;
     }
-
 }

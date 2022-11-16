@@ -77,10 +77,14 @@ session_start();
                 $url[0] == "ventas" ||
                 $url[0] == "administrar-ventas" ||
                 $url[0] == "reportes" ||
-                $url[0] == "crear-usuario"
+                $url[0] == "crear-usuario" ||
+                $url[0] == "permisos" 
             ) {
                 //Redireccionamos al usuario a esa pagina
                 include "pages/" . $url[0] . ".php";
+                
+            } else if ($_GET["id"]== "actualizar-usuario") {
+                include "pages/" . $_GET["id"] . ".php";
             } else if ($url[0] == "logout") {
                 //Cerramos la session
                 session_destroy();

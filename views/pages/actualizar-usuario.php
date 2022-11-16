@@ -4,7 +4,7 @@
             <div class="card-body">
                 <div class="d-flex align-items-center justify-content-between">
                     <a class="row-left-i" href="usuarios"><i class="fa-solid fa-arrow-left"></i></a>
-                    <h1 class="text-uppercase">Crear Usuario</h1>
+                    <h1 class="text-uppercase">Actualizar Usuario</h1>
                     <b></b>
                 </div>
                 <form role="form" method="POST" enctype="multipart/form-data">

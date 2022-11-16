@@ -1,6 +1,6 @@
 <nav id="sidebar" class="sidebar js-sidebar">
     <div class="sidebar-content js-simplebar">
-        <a class="sidebar-brand" href="index.html">
+        <a class="sidebar-brand" href="inicio">
             <span class="align-middle">Inventory System</span>
         </a>
 
@@ -26,6 +26,12 @@
             <li class="sidebar-item">
                 <a class="sidebar-link" href="usuarios">
                     <i class="fa-solid fa-user"></i> <span class="align-middle">Usuarios</span>
+                </a>
+            </li>
+            
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="permisos">
+                    <i class="fa-solid fa-key"></i> <span class="align-middle">Permisos</span>
                 </a>
             </li>
 

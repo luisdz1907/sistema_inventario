@@ -16,9 +16,11 @@
                             <tr>
                                 <th class="text-center" scope="col">#</th>
                                 <th class="text-center" scope="col">Nombre</th>
-                                <th class="text-center" scope="col">Usuario</th>
-                                <th class="text-center" scope="col">Perfil</th>
-                                <th class="text-center" scope="col">Accion</th>
+                                <th class="text-center" scope="col">Tipo Documento</th>
+                                <th class="text-center" scope="col">Numero Documento</th>
+                                <th class="text-center" scope="col">Fecha Nacimiento</th>
+                                <th class="text-center" scope="col">Ciudad</th>
+                                <th class="text-center" scope="col">Celular</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -28,10 +30,13 @@
                              ?>
                                 <td class="text-center"><?php echo $row["id"] ?></td>
                                 <td class="text-center"><?php echo $row["nombre"] ?></td>
-                                <td class="text-center"><?php echo $row["usuario"] ?></td>
-                                <td class="text-center"><?php echo $row["perfil"] ?></td>
+                                <td class="text-center"><?php echo $row["tipo_documento"] ?></td>
+                                <td class="text-center"><?php echo $row["nro_documento"] ?></td>
+                                <td class="text-center"><?php echo $row["fecha_nacimiento"] ?></td>
+                                <td class="text-center"><?php echo $row["ciudad_residencia"] ?></td>
+                                <td class="text-center"><?php echo $row["celular"] ?></td>
                                 <td class="text-center">
-                                    <button class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></button>
+                                    <a class="btn btn-success" href="actualizar-usuario"><i class="fa-solid fa-pen-to-square"></i></a>
                                     <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
                                 </td>
                             </tr>
