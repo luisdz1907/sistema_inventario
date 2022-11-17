@@ -64,36 +64,25 @@ session_start();
         include "views/includes/navbar.php";
 
         //PAGINAS PRINCIPALES
-        $url = array(); //Obtenemos el valor de la url
-    
+        $url = explode("/", $_GET["url"]);
+        $controller = "";
+        $method;
+        $params = "";
+        
         if (isset($_GET["url"])) {
-            $url = explode("/", $_GET["url"]);
-            if (
-                $url[0] == "inicio" ||
-                $url[0] == "usuarios" ||
-                $url[0] == "categorias" ||
-                $url[0] == "productos" ||
-                $url[0] == "clientes" ||
-                $url[0] == "ventas" ||
-                $url[0] == "administrar-ventas" ||
-                $url[0] == "reportes" ||
-                $url[0] == "crear-usuario" ||
-                $url[0] == "permisos" 
-            ) {
+            
+            if (isset($url[0])) {
+                $controller = $url[0];
                 //Redireccionamos al usuario a esa pagina
-                include "pages/" . $url[0] . ".php";
-                
-            } else if ($_GET["id"]== "actualizar-usuario") {
-                include "pages/" . $_GET["id"] . ".php";
-            } else if ($url[0] == "logout") {
-                //Cerramos la session
-                session_destroy();
-                $_SESSION["login"] = false;
-                header('Location: /');
-
-            } else {
-                include "pages/404.php";
-            }
+                include "pages/" . $controller . ".php";
+            } 
+             if (isset($url[1])) {
+                if($url[1] != ''){
+                    $params = $url[1];
+                }
+             }
+            //  echo $controller . " ". $params;
+            //  include "pages/" . $url[0] . ".php";
         } else {
             include "views/pages/inicio.php";
         }

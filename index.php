@@ -9,5 +9,6 @@ require_once 'models/usuarioModel.php';
 
 require_once 'views/includes/debug.php';
 
-$template = new Template();
-$template -> ctrTemplate();
+$router = new Template();
+$router -> ctrTemplate();
+

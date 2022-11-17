@@ -47,5 +47,14 @@ class UsuarioModel
         }
     }
 
+    static public function eliminarUsuario($id){
+        $query = "DELETE FROM tbl_user_data WHERE id=:id";
+        $stmt = Conexion::conectarDB()->prepare($query);
+        $stmt->bindParam(":id", $id);
+      
+        $resultado = $stmt->execute() ? true : false;
+        return $resultado;
+    }
+
 
 }

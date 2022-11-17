@@ -81,6 +81,16 @@ class UsuarioController
         }
     }
 
+    static public function eliminarUsuario($id){
+        $resultado = UsuarioModel::eliminarUsuario($id);
+
+       if($resultado){
+        echo 
+        '<Script>
+        alert("Usuario Eliminado");
+        </Script>';
+       }
+    }
     public function usuarioId($username)
     {
         $resultado = UsuarioModel::usuarioId($username);
