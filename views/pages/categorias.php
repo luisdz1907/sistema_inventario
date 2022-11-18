@@ -7,11 +7,11 @@
                     <div>
                         <h1 class="text-uppercase text-center fs-3">Crear Categoria</h1>
                     </div>
-                    <form role="form" method="POST" enctype="multipart/form-data">
+                    <form role="form" method="POST">
                         <div class="row">
                             <div>
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" name="nombre" id="nombre">
+                                    <input type="text" class="form-control" name="nombre_categoria" id="nombre">
                                 </div>
                             </div>
                         </div>
@@ -21,8 +21,8 @@
                         </div>
 
                         <?php
-                        $crearUsuario = new UsuarioController();
-                        $crearUsuario->crearUsuario();
+                        $categoria = new categoriaController();
+                        $categoria->crearCategoria();
                         ?>
                     </form>
                 </div>
@@ -42,6 +42,26 @@
                                 </tr>
                             </thead>
                             <tbody>
+
+                                <?php
+                                $categoriasList = CategoriaController::listaCategoria();
+                                foreach ($categoriasList as $row) : ?>
+                                    <tr>
+                                        <td class="text-center">
+                                            <?php echo $row["id"] ?>
+                                        </td>
+                                        <td class="text-center">
+                                            <?php echo $row["nombre_categoria"] ?>
+                                        </td>
+                                        <td class="text-center">
+                                            <form method="POST">
+                                                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                                <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <?php endforeach ?>
+
                             </tbody>
                         </table>
                     </div>

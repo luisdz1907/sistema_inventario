@@ -57,9 +57,9 @@ if ($id) {
                             <td class="text-center">
                                 <?php echo $row["celular"] ?>
                             </td>
-                            <td class="text-center d-flex">
+                            <td class="text-center">
 
-                                <a style="margin-right: 2px ;" class="btn btn-success" 
+                                <a style="margin-bottom: 4px ;" class="btn btn-success" 
                                 href="actualizar-usuario?id=<?php echo $row["id"] ?>"><i
                                         class="fa-solid fa-pen-to-square"></i></a>
 

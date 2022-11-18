@@ -66,8 +66,6 @@ session_start();
         //PAGINAS PRINCIPALES
         $url = explode("/", $_GET["url"]);
         $controller = "";
-        $method;
-        $params = "";
         
         if (isset($_GET["url"])) {
             
@@ -76,13 +74,6 @@ session_start();
                 //Redireccionamos al usuario a esa pagina
                 include "pages/" . $controller . ".php";
             } 
-             if (isset($url[1])) {
-                if($url[1] != ''){
-                    $params = $url[1];
-                }
-             }
-            //  echo $controller . " ". $params;
-            //  include "pages/" . $url[0] . ".php";
         } else {
             include "views/pages/inicio.php";
         }

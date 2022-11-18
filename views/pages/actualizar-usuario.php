@@ -1,3 +1,17 @@
+<?php 
+$id = $_GET["id"] ?? null;
+
+$usuario = new UsuarioController();
+$userData = $usuario->usuarioId($id);//Obtenemos la informacion del usuario
+
+$nombre = $userData["nombre"];
+$tipo_documento = $userData["tipo_documento"];
+$nro_documento = $userData["nro_documento"];
+$direccion = $userData["direccion"];
+$fecha_nacimiento = $userData["fecha_nacimiento"];
+$ciudad_residencia = $userData["ciudad_residencia"];
+$celular = $userData["celular"];
+?>
 <main class="content">
     <div class="container-fluid p-0">
         <div style="margin: 0 auto ;" class="card w-75">
@@ -12,7 +26,7 @@
                         <div class="col-lg-12">
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre y apellidos</label>
-                                <input type="text" class="form-control" name="nombre" id="nombre">
+                                <input type="text" class="form-control" name="nombre" id="nombre" value="<?php echo $nombre ?>">
                             </div>
                         </div>
                     </div>
@@ -29,7 +43,7 @@
                         <div class="col-lg-6">
                             <div class="mb-3">
                                 <label for="nro_documento" class="form-label">Documento</label>
-                                <input type="text" class="form-control" name="nro_documento"
+                                <input type="text" class="form-control" value="<?php echo $nro_documento?>" name="nro_documento"
                                     id="nro_documento">
                             </div>
                         </div>
@@ -39,14 +53,14 @@
                         <div class="col-lg-6">
                             <div class="mb-3">
                                 <label for="fecha_nacimiento" class="form-label">Fecha de nacimiento</label>
-                                <input type="date" class="form-control" name="fecha_nacimiento" id="fecha_nacimiento">
+                                <input type="date" class="form-control" value="<?php echo $fecha_nacimiento  ?>" name="fecha_nacimiento" id="fecha_nacimiento">
                             </div>
                         </div>
 
                         <div class="col-lg-6">
                             <div class="mb-3">
                                 <label for="celular" class="form-label">Numero de celular</label>
-                                <input type="text" min="1" class="form-control" name="celular" id="celular">
+                                <input type="text" min="1" class="form-control" value="<?php echo $celular ?>" name="celular" id="celular">
                             </div>
                         </div>
                     </div>
@@ -55,14 +69,14 @@
                         <div class="col-lg-6">
                             <div class="mb-3">
                                 <label for="direccion" class="form-label">Direccion</label>
-                                <input type="text" class="form-control" name="direccion" id="direccion">
+                                <input type="text" class="form-control" value="<?php echo $direccion  ?>" name="direccion" id="direccion">
                             </div>
                         </div>
 
                         <div class="col-lg-6">
                             <div class="mb-3">
                                 <label for="ciudad_residencia" class="form-label">Ciudad</label>
-                                <input type="text" class="form-control" name="ciudad_residencia" id="ciudad_residencia">
+                                <input type="text" class="form-control" value="<?php echo $ciudad_residencia  ?>" name="ciudad_residencia" id="ciudad_residencia">
                             </div>
                         </div>
                     </div>
@@ -108,8 +122,7 @@
                     </div>
 
                     <?php
-                    $crearUsuario = new UsuarioController();
-                    $crearUsuario->crearUsuario();
+                    $usuario->actualizarUsuario();
                     ?>
                 </form>
             </div>
