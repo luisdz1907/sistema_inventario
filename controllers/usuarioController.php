@@ -77,7 +77,7 @@ class UsuarioController
 
             //Mostramos alerta segun el return
             if ($result) {
-                echo alertError("Usuario guardado");
+                echo alertSuccess("Usuario guardado");
             } else {
                 echo alertError("Error al guardar el usuario");
             }
@@ -114,7 +114,7 @@ class UsuarioController
 
                 //Mostramos alerta segun el return
                 if ($result) {
-                    echo alertError("Usuario actualizado");
+                    echo alertSuccess("Usuario actualizado");
                 } else {
                     echo alertError("Error al guardar el usuario");
                 }

@@ -5,7 +5,7 @@ class CategoriaModel
 {
     static public function crearCategoriaModel($nombre_categoria)
     {
-        $query = "INSERT INTO tb_categoria(	nombre_categoria ) VALUES (:nombre_categoria)";
+        $query = "INSERT INTO tbl_categoria(	nombre_categoria ) VALUES (:nombre_categoria)";
         $stmt = Conexion::conectarDB()->prepare($query);
         $stmt->bindParam(':nombre_categoria', $nombre_categoria);
 
@@ -20,7 +20,7 @@ class CategoriaModel
 
     static public function listaCategoriaModel()
     {
-        $query = "SELECT * FROM tb_categoria";
+        $query = "SELECT * FROM tbl_categoria";
         $stmt = Conexion::conectarDB()->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll();

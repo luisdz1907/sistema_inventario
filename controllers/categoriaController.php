@@ -15,7 +15,7 @@ class CategoriaController
                 $result = CategoriaModel::crearCategoriaModel($nombre_categoria);
 
                 if ($result) {
-                    echo alertError("Categoria guardado");
+                    echo alertSuccess("Categoria guardado");
                 } else {
                     echo alertError("Error al guardar el usuario");
                 }
