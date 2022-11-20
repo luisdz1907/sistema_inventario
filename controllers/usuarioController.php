@@ -6,8 +6,8 @@ class UsuarioController
 {
     public function loginUsuario()
     {
-        $username = $_POST["username"];
-        $password = $_POST["password"];
+        $username = isset($_POST["username"]) ? $_POST["username"] : null;
+        $password = isset($_POST["password"]) ? $_POST["password"] : null;
 
 
         if (isset($password)) {
@@ -17,16 +17,16 @@ class UsuarioController
             ) {
 
                 $resul = $this->usuarioLogin($username);
-                //Verificamos la contraseña
-                // $auth = password_verify($password, $resul["password"]);
+                // Verificamos la contraseña
+                $auth = password_verify($password, $resul["password"]);
 
-                // if ($auth) {
-                //     // Cambiamos el valor de la session
-                //     $_SESSION["login"] = true;
-                //     header('Location: inicio');
-                // } else {
-                //     echo alertError("Error al ingresar, credenciales inválidas");
-                // }
+                if ($auth) {
+                    // Cambiamos el valor de la session
+                    $_SESSION["login"] = true;
+                    header('Location: inicio');
+                } else {
+                    echo alertError("Error al ingresar, credenciales inválidas");
+                }
 
                 if (
                     $resul["usuario"] == $username &&
@@ -50,17 +50,33 @@ class UsuarioController
 
     public function crearUsuario()
     {
-        $nombre =  $_POST["nombre"];
-        $tipo_documento =  $_POST["tipo_documento"];
-        $nro_documento =  $_POST["nro_documento"];
-        $direccion =  $_POST["direccion"];
-        $fecha_nacimiento =  $_POST["fecha_nacimiento"];
-        $ciudad_residencia =  $_POST["ciudad_residencia"];
-        $celular =  $_POST["celular"];
+        $nombre =  isset($_POST["nombre"]) ? $_POST["nombre"] : '';
+        $tipo_documento =  isset($_POST["tipo_documento"]) ? $_POST["tipo_documento"] : '';
+        $nro_documento =  isset($_POST["nro_documento"]) ? $_POST["nro_documento"] : '';
+        $direccion =  isset($_POST["direccion"]) ? $_POST["direccion"] : '';
+        $fecha_nacimiento =  isset($_POST["fecha_nacimiento"]) ? $_POST["fecha_nacimiento"] : '';
+        $ciudad_residencia =  isset($_POST["ciudad_residencia"]) ? $_POST["ciudad_residencia"] : '';
+        $celular =  isset($_POST["celular"]) ? $_POST["celular"] : '';
+
+        $usuario =  isset($_POST["usuario"]) ? $_POST["usuario"] : '';
+        $password =  isset($_POST["password"]) ? $_POST["password"] : '';
+        $perfil =  isset($_POST["perfil"]) ? $_POST["perfil"] : '';
 
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            
+
+
+            //    echo validarInputText($tipo_documento, "El elija el tipo de documento");
+            //    echo validarInputText($nro_documento, "Ingrese el numero del documento");
+            //    echo validarInputText($direccion, "El direccion no puede ser vacio");
+            //    echo validarInputText($nombre, "La ciudad no puede ser vacio");
+            //    echo validarInputText($nombre, "El usuario no puede ser vacio");
+            //    echo validarInputText($nombre, "El password no puede ser vacio");
+            //    echo validarInputText($nombre, "El perfil no puede ser vacio");
+
+            //Encriptamos el password
+            $passwordHash = password_hash($password, PASSWORD_BCRYPT);
+
             //Creamos un arreglo con los valores capturados
             $data = array(
                 "nombre" => $nombre,
@@ -69,7 +85,10 @@ class UsuarioController
                 "direccion" => $direccion,
                 "fecha_nacimiento" => $fecha_nacimiento,
                 "ciudad_residencia" => $ciudad_residencia,
-                "celular" => $celular
+                "celular" => $celular,
+                "usuario" => $usuario,
+                "password" => $passwordHash,
+                "perfil" => $perfil,
             );
 
 
@@ -88,15 +107,21 @@ class UsuarioController
         $id = $_GET["id"] ?? null;
 
         if (isset($id)) {
-            $nombre =  $_POST["nombre"];
-            $tipo_documento =  $_POST["tipo_documento"];
-            $nro_documento =  $_POST["nro_documento"];
-            $direccion =  $_POST["direccion"];
-            $fecha_nacimiento =  $_POST["fecha_nacimiento"];
-            $ciudad_residencia =  $_POST["ciudad_residencia"];
-            $celular =  $_POST["celular"];
+            $nombre =  isset($_POST["nombre"]) ? $_POST["nombre"] : null;
+            $tipo_documento =  isset($_POST["tipo_documento"]) ? $_POST["tipo_documento"] : null;
+            $nro_documento =  isset($_POST["nro_documento"]) ? $_POST["nro_documento"] : null;
+            $direccion =  isset($_POST["direccion"]) ? $_POST["direccion"] : null;
+            $fecha_nacimiento =  isset($_POST["fecha_nacimiento"]) ? $_POST["fecha_nacimiento"] : null;
+            $ciudad_residencia =  isset($_POST["ciudad_residencia"]) ? $_POST["ciudad_residencia"] : null;
+            $celular =  isset($_POST["celular"]) ? $_POST["celular"] : null;
+
+            $usuario =  isset($_POST["usuario"]) ? $_POST["usuario"] : null;
+            $password =  isset($_POST["password"]) ? $_POST["password"] : null;
+            $perfil =  isset($_POST["perfil"]) ? $_POST["perfil"] : null;
 
             if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+                $passwordHash = password_hash($password, PASSWORD_BCRYPT);
 
                 //Creamos un arreglo con los valores capturados
                 $data = array(
@@ -106,7 +131,10 @@ class UsuarioController
                     "direccion" => $direccion,
                     "fecha_nacimiento" => $fecha_nacimiento,
                     "ciudad_residencia" => $ciudad_residencia,
-                    "celular" => $celular
+                    "celular" => $celular,
+                    "usuario" => $usuario,
+                    "password" => $passwordHash,
+                    "perfil" => $perfil,
                 );
 
 

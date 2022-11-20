@@ -7,7 +7,7 @@ class Conexion
         try {
             $con = new PDO(
                 "mysql:host=localhost;dbname=sistema_inventarios",
-                "luisdz",
+                "root",
                 "root"
             );
         } catch (PDOException $e) {

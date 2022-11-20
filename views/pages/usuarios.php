@@ -1,6 +1,6 @@
 <?php
 //Obtenemos el valor del id enviado 
-$id = $_POST["id"];
+$id = isset($_POST["id"]) ? $_POST["id"] : null;
 if ($id) {
     $usuarioId = UsuarioController::eliminarUsuario($id);
 }
@@ -28,6 +28,8 @@ if ($id) {
                                 <th class="text-center" scope="col">Fecha Nacimiento</th>
                                 <th class="text-center" scope="col">Ciudad</th>
                                 <th class="text-center" scope="col">Celular</th>
+                                <th class="text-center" scope="col">Usuario</th>
+                                <th class="text-center" scope="col">Perfil</th>
                                 <th class="text-center" scope="col">Accion</th>
                             </tr>
                         </thead>
@@ -56,6 +58,12 @@ if ($id) {
                             </td>
                             <td class="text-center">
                                 <?php echo $row["celular"] ?>
+                            </td>
+                            <td class="text-center">
+                                <?php echo $row["usuario"] ?>
+                            </td>
+                            <td class="text-center">
+                                <?php echo $row["perfil"] ?>
                             </td>
                             <td class="text-center">
 

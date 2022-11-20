@@ -57,8 +57,6 @@ session_start();
 
     <?php
     if (isset($_SESSION["login"]) && $_SESSION["login"] == true) {
-
-
         echo '<div class="wrapper">';
         include "views/includes/sidebar.php";
         include "views/includes/navbar.php";
@@ -73,7 +71,7 @@ session_start();
                 $controller = $url[0];
                 //Redireccionamos al usuario a esa pagina
                 include "pages/" . $controller . ".php";
-            } 
+            }
         } else {
             include "views/pages/inicio.php";
         }

@@ -1,6 +1,7 @@
 <?php
 //Obtenemos el valor del id enviado 
-$id = $_POST["id"];
+$id = isset($_POST["id"]) ? $_POST["id"] : null;
+
 if ($id) {
 }
 ?>
@@ -29,8 +30,10 @@ if ($id) {
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
+                            
+                        <?php
                             $listProductos = ProductoController::listaProductos();
+                            phpinfo();
                             foreach ($listProductos as $row) :
                             ?>
 
